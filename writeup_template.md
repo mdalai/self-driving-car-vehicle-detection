@@ -19,6 +19,7 @@ The goals / steps of this project are the following:
 [image21]: ./assets/hog21.PNG
 [image22]: ./assets/hog22.PNG
 [image_norm]: ./assets/normalization2.PNG
+[image_preds]: ./assets/prediction.PNG
 [image5]: ./assets/bboxes_and_heat.png
 [image6]: ./assets/labels_map.png
 [image7]: ./assets/output_bboxes.png
@@ -89,13 +90,41 @@ It seems middle one works best. And each channel HOG works to differentiate Car 
 ### Combine all features and normalization
 - Combine: we will combine all features extracted from above steps.
 - Normalization: We want all features contribute evenly to the model training. We will use Scikit-learn StandardScaler. Here is an example of normalization:
+
 ![alt text][image_norm]
 
 
 ## Train Classifier
 #### Describe how (and identify where in your code) you trained a classifier using your selected HOG features (and color features if you used them).
 
-I trained a linear SVM using...
+I trained a linear SVM using:
+- Combination of spacial features, color histogram features and HOG features.
+- Normalization and Shuffle, Split with Scikit-learn handy tools.
+
+I tried 6 times with different parameters. The final one I decide to use:
+```
+color_space = 'YCrCb' # Can be RGB, HSV, LUV, HLS, YUV, YCrCb
+orient = 9  # HOG orientations
+pix_per_cell = 8 # HOG pixels per cell
+cell_per_block = 2 # HOG cells per block
+hog_channel = "ALL" # Can be 0, 1, 2, or "ALL"
+spatial_size = (32, 32) # Spatial binning dimensions
+hist_bins = 32    # Number of histogram bins
+spatial_feat = True # Spatial features on or off
+hist_feat = True # Histogram features on or off
+hog_feat = True # HOG features on or off
+```
+I got following training results:
+```
+Using: 9 orientations 8 pixels per cell and 2 cells per block
+Feature vector length: 8460
+21.73 Seconds to train SVC...
+Test Accuracy of SVC =  0.9932
+```
+
+Here is an example of predictions using trained SVM:
+
+![alt text][image_preds]
 
 ###Sliding Window Search
 
