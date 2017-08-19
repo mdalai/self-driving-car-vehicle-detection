@@ -126,7 +126,7 @@ Here is an example of predictions using trained SVM:
 
 ![alt text][image_preds]
 
-** Test Result: **
+**Test Result:**
 - Cars predictions are all corrrect.
 - NotCars predictions 3 corrrect 7 incorrect.
 - **Conclusion**: 
