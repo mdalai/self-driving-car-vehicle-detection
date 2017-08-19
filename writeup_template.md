@@ -10,9 +10,11 @@ The goals / steps of this project are the following:
 * Estimate a bounding box for vehicles detected.
 
 [//]: # (Image References)
+[example]: ./assets/example.PNG
 [image1]: ./assets/resized_car_image.PNG
 [image2]: ./assets/color_histogram.PNG
-[image3]: ./assets/hog.PNG
+[his_error]: ./assets/color_histogram_error.PNG
+[image3]: ./assets/hog41.PNG
 [image4]: ./assets/normalization2.PNG
 [image5]: ./assets/bboxes_and_heat.png
 [image6]: ./assets/labels_map.png
@@ -23,6 +25,15 @@ _[Rubric](https://review.udacity.com/#!/rubrics/513/view) Points:
 Here I will consider the rubric points individually and describe how I addressed each point in my implementation._  
 
 ---
+## Data Exploration
+- Load all the `vehicle` and `non-vehicle` images. All png files.
+- A count of 8792  cars and 8968  non-cars
+- Size of each image:  (64, 64, 3)
+
+Here is an example of one of each of the `vehicle` and `non-vehicle` classes:
+
+![alt text][example]
+
 ## Feature Extraction
 ### Spatial features (raw pixel features) 
 - Compute Spatial features: extract raw pixel features. 
@@ -35,25 +46,27 @@ Here I will consider the rubric points individually and describe how I addressed
 - Compute Color histogram features: cars can be identified by its color. 
 - Different color space can be adapted: RGB, HSV ...
 
+It has problem if using Matplotlib image to read the image. Matplotlib image reads PNG file in scale of 0 to 1. See the example:
+
+![alt text][his_error]
+
+Then I used OpenCV to read instead. Much better results, see bellow image:
+
 ![alt text][image2]
 
 ### Histogram of Oriented Gradients (HOG)
 ![alt text][image2]
 
-####1. Explain how (and identify where in your code) you extracted HOG features from the training images.
-
-The code for this step is contained in the first code cell of the IPython notebook (or in lines # through # of the file called `some_file.py`).  
-
-I started by reading in all the `vehicle` and `non-vehicle` images.  Here is an example of one of each of the `vehicle` and `non-vehicle` classes:
-
-![alt text][image3]
+#### 1. Explain how (and identify where in your code) you extracted HOG features from the training images.
 
 I then explored different color spaces and different `skimage.hog()` parameters (`orientations`, `pixels_per_cell`, and `cells_per_block`).  I grabbed random images from each of the two classes and displayed them to get a feel for what the `skimage.hog()` output looks like.
+
+![alt text][image3]
 
 Here is an example using the `YCrCb` color space and HOG parameters of `orientations=8`, `pixels_per_cell=(8, 8)` and `cells_per_block=(2, 2)`:
 
 
-![alt text][image2]
+![alt text][image3]
 
 ####2. Explain how you settled on your final choice of HOG parameters.
 
