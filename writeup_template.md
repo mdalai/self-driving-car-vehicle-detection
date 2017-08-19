@@ -77,6 +77,7 @@ I tried various combinations of parameters:
 - `orientations=8`, `pixels_per_cell=(8, 8)` and `cells_per_block=(2, 2)`
 - `orientations=9`, `pixels_per_cell=(8, 8)` and `cells_per_block=(2, 2)`
 - `orientations=9`, `pixels_per_cell=(16, 16)` and `cells_per_block=(4, 4)`
+
 It seems middle one works best. And each channel HOG works to differentiate Car and NotCar. So we should combine all Channels as final HOG features.
 
 ![alt text][image20]
@@ -85,8 +86,8 @@ It seems middle one works best. And each channel HOG works to differentiate Car 
 
 ![alt text][image22]
 
-
-####3. Describe how (and identify where in your code) you trained a classifier using your selected HOG features (and color features if you used them).
+## Train Classifier
+#### Describe how (and identify where in your code) you trained a classifier using your selected HOG features (and color features if you used them).
 
 I trained a linear SVM using...
 
