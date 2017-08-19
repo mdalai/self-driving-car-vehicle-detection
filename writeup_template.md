@@ -20,6 +20,8 @@ The goals / steps of this project are the following:
 [image22]: ./assets/hog22.PNG
 [image_norm]: ./assets/normalization2.PNG
 [image_preds]: ./assets/prediction.PNG
+[image_slide1]: ./assets/slide_window1.PNG
+[image_slide2]: ./assets/slide_window2.PNG
 [image5]: ./assets/bboxes_and_heat.png
 [image6]: ./assets/labels_map.png
 [image7]: ./assets/output_bboxes.png
@@ -140,7 +142,13 @@ Here is an example of predictions using trained SVM:
 
 I decided to search random window positions at random scales all over the image and came up with this (ok just kidding I didn't actually ;):
 
-![alt text][image3]
+![alt text][image_slide1]
+
+I applied following techniques:
+- Interest areas: ystart = 400, ystop = 656
+- Scale the image smaller: scale = 1.5;  I can scale window size, but my model is expecting (64,64). So I decide to scale image size instead. 
+
+![alt text][image_slide2]
 
 #### 2. Show some examples of test images to demonstrate how your pipeline is working.  What did you do to optimize the performance of your classifier?
 
