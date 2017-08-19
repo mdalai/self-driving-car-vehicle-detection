@@ -15,6 +15,9 @@ The goals / steps of this project are the following:
 [image2]: ./assets/color_histogram.PNG
 [his_error]: ./assets/color_histogram_error.PNG
 [image3]: ./assets/hog41.PNG
+[image20]: ./assets/hog20.PNG
+[image21]: ./assets/hog21.PNG
+[image22]: ./assets/hog22.PNG
 [image4]: ./assets/normalization2.PNG
 [image5]: ./assets/bboxes_and_heat.png
 [image6]: ./assets/labels_map.png
@@ -63,14 +66,25 @@ I then explored different color spaces and different `skimage.hog()` parameters 
 
 ![alt text][image3]
 
-Here is an example using the `YCrCb` color space and HOG parameters of `orientations=8`, `pixels_per_cell=(8, 8)` and `cells_per_block=(2, 2)`:
+Here is an example using the `YCrCb` color space and HOG parameters of `orientations=9`, `pixels_per_cell=(8, 8)` and `cells_per_block=(2, 2)`:
 
 
-![alt text][image3]
+![alt text][image20]
 
-####2. Explain how you settled on your final choice of HOG parameters.
+#### 2. Explain how you settled on your final choice of HOG parameters.
 
-I tried various combinations of parameters and...
+I tried various combinations of parameters:
+- `orientations=8`, `pixels_per_cell=(8, 8)` and `cells_per_block=(2, 2)`
+- `orientations=9`, `pixels_per_cell=(8, 8)` and `cells_per_block=(2, 2)`
+- `orientations=9`, `pixels_per_cell=(16, 16)` and `cells_per_block=(4, 4)`
+It seems middle one works best. And each channel HOG works to differentiate Car and NotCar. So we should combine all Channels as final HOG features.
+
+![alt text][image20]
+
+![alt text][image21]
+
+![alt text][image22]
+
 
 ####3. Describe how (and identify where in your code) you trained a classifier using your selected HOG features (and color features if you used them).
 
