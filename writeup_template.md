@@ -1,9 +1,4 @@
-##Writeup Template
-###You can use this file as a template for your writeup if you want to submit it as a markdown file, but feel free to use some other method and submit a pdf if you prefer.
-
----
-
-**Vehicle Detection Project**
+# Vehicle Detection Project
 
 The goals / steps of this project are the following:
 
@@ -15,26 +10,35 @@ The goals / steps of this project are the following:
 * Estimate a bounding box for vehicles detected.
 
 [//]: # (Image References)
-[image1]: ./examples/car_not_car.png
-[image2]: ./examples/HOG_example.jpg
-[image3]: ./examples/sliding_windows.jpg
-[image4]: ./examples/sliding_window.jpg
-[image5]: ./examples/bboxes_and_heat.png
-[image6]: ./examples/labels_map.png
-[image7]: ./examples/output_bboxes.png
+[image1]: ./assets/resized_car_image.PNG
+[image2]: ./assets/color_histogram.PNG
+[image3]: ./assets/hog.PNG
+[image4]: ./assets/normalization2.PNG
+[image5]: ./assets/bboxes_and_heat.png
+[image6]: ./assets/labels_map.png
+[image7]: ./assets/output_bboxes.png
 [video1]: ./project_video.mp4
 
-## [Rubric](https://review.udacity.com/#!/rubrics/513/view) Points
-###Here I will consider the rubric points individually and describe how I addressed each point in my implementation.  
+** [Rubric](https://review.udacity.com/#!/rubrics/513/view) Points **
+Here I will consider the rubric points individually and describe how I addressed each point in my implementation.  
 
 ---
-###Writeup / README
+## Feature Extraction
+### Spatial features (raw pixel features) 
+- Compute Spatial features: extract raw pixel features. 
+- Resize the image: We do not want all pixels because it is computational expensive. Therefore we resize the image into smaller size. 
+- Transform into feature vector by RAVEL().
 
-####1. Provide a Writeup / README that includes all the rubric points and how you addressed each one.  You can submit your writeup as markdown or pdf.  [Here](https://github.com/udacity/CarND-Vehicle-Detection/blob/master/writeup_template.md) is a template writeup for this project you can use as a guide and a starting point.  
+![alt text][image1]
 
-You're reading it!
+### Color histogram features
+- Compute Color histogram features: cars can be identified by its color. 
+- Different color space can be adapted: RGB, HSV ...
 
-###Histogram of Oriented Gradients (HOG)
+![alt text][image2]
+
+### Histogram of Oriented Gradients (HOG)
+![alt text][image2]
 
 ####1. Explain how (and identify where in your code) you extracted HOG features from the training images.
 
@@ -42,7 +46,7 @@ The code for this step is contained in the first code cell of the IPython notebo
 
 I started by reading in all the `vehicle` and `non-vehicle` images.  Here is an example of one of each of the `vehicle` and `non-vehicle` classes:
 
-![alt text][image1]
+![alt text][image3]
 
 I then explored different color spaces and different `skimage.hog()` parameters (`orientations`, `pixels_per_cell`, and `cells_per_block`).  I grabbed random images from each of the two classes and displayed them to get a feel for what the `skimage.hog()` output looks like.
 
