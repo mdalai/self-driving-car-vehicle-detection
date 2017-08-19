@@ -18,7 +18,7 @@ The goals / steps of this project are the following:
 [image20]: ./assets/hog20.PNG
 [image21]: ./assets/hog21.PNG
 [image22]: ./assets/hog22.PNG
-[image4]: ./assets/normalization2.PNG
+[image_norm]: ./assets/normalization2.PNG
 [image5]: ./assets/bboxes_and_heat.png
 [image6]: ./assets/labels_map.png
 [image7]: ./assets/output_bboxes.png
@@ -85,6 +85,12 @@ It seems middle one works best. And each channel HOG works to differentiate Car 
 ![alt text][image21]
 
 ![alt text][image22]
+
+### Combine all features and normalization
+- Combine: we will combine all features extracted from above steps.
+- Normalization: We want all features contribute evenly to the model training. We will use Scikit-learn StandardScaler. Here is an example of normalization:
+![alt text][image_norm]
+
 
 ## Train Classifier
 #### Describe how (and identify where in your code) you trained a classifier using your selected HOG features (and color features if you used them).
