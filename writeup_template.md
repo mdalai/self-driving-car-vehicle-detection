@@ -23,6 +23,9 @@ The goals / steps of this project are the following:
 [image_slide1]: ./assets/slide_window1.PNG
 [image_slide2]: ./assets/slide_window2.PNG
 [image_slide21]: ./assets/slide_window21.PNG
+[image41]: ./assets/pipeline_test1.PNG
+[image42]: ./assets/pipeline_test_all.PNG
+
 [image5]: ./assets/bboxes_and_heat.png
 [image6]: ./assets/labels_map.png
 [image7]: ./assets/output_bboxes.png
@@ -165,7 +168,9 @@ I decided to use later one because the first one did not work out for me. To use
 
 Ultimately I searched on two scales using YCrCb 3-channel HOG features plus spatially binned color and histograms of color in the feature vector, which provided a nice result.  Here are some example images:
 
-![alt text][image4]
+![alt text][image41]
+
+![alt text][image42]
 ---
 
 ## Video Implementation
