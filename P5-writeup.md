@@ -190,18 +190,21 @@ Here is an example of applying heatmap:
 
 ![alt text][image51]
 
-**The results is NOT Satisfying!!! In order to apply heatmap, we need to have many bounding boxes detection. It is too few now. I need more overlapping detections. I updates the overlapping parameter and try it again**
+**The results is NOT Satisfying!!! In order to apply heatmap, we need to have many bounding boxes detection. It is too few now. I need more overlapping detections. I updates the overlapping parameter from (0.5, 0.5) to (0.75, 0.75) and try it again. I got better results as following:**
 
 ![alt text][image52]
 
-**Much better!!!**
 
-I added the heatmap technique into the pipeline. Here's an example result showing the heatmap from a series of frames of video, the result of `scipy.ndimage.measurements.label()` and the bounding boxes then overlaid on the last frame of video:
+I added the heatmap technique into the pipeline. Here's an example result showing the heatmap from a series of frames of video, the result of `scipy.ndimage.measurements.label()` and the bounding boxes then overlaid on the last frame of video.
+
+Here is the sesult:
+
+![alt text][image61]
 
 
-I tried following heatmap thresholds: 1, 0.5, 0.75, 0.85, 0.95. Best: **heat_threshold = 0.75**.
+Some has no bounding boxes. I need to lower the threshold. I tried following heatmap thresholds: 1, 0.5, 0.75, 0.85, 0.95. Best: **heat_threshold = 0.75**.
 
-### Here are six frames and their corresponding heatmaps, resulting bounding boxes:
+Here are six frames and their corresponding heatmaps, resulting bounding boxes:
 
 ![alt text][image62]
 
