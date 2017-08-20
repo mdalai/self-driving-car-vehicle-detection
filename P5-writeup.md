@@ -69,7 +69,6 @@ Then I used OpenCV to read instead. Much better results, see bellow image:
 ![alt text][image2]
 
 ### Histogram of Oriented Gradients (HOG)
-![alt text][image2]
 
 #### 1. Explain how (and identify where in your code) you extracted HOG features from the training images.
 
@@ -180,7 +179,7 @@ Ultimately I searched on two scales using YCrCb 3-channel HOG features plus spat
 ## Video Implementation
 
 #### 1. Provide a link to your final video output.  Your pipeline should perform reasonably well on the entire project video (somewhat wobbly or unstable bounding boxes are ok as long as you are identifying the vehicles most of the time with minimal false positives.)
-Here's a [link to my video result](./project_video.mp4)
+Here's a [link to my video result](./project_video_output3.mp4)
 
 
 #### 2. Describe how (and identify where in your code) you implemented some kind of filter for false positives and some method for combining overlapping bounding boxes.
@@ -207,7 +206,25 @@ I tried following heatmap thresholds: 1, 0.5, 0.75, 0.85, 0.95. Best: **heat_thr
 ![alt text][image62]
 
 
-### Create final pipeline and test results: 
+### Create final pipeline and test results:
+
+```
+##################### PARAMETERS ####################################################################
+color_space = 'YCrCb' # Can be RGB, HSV, LUV, HLS, YUV, YCrCb
+orient = 9  # HOG orientations
+pix_per_cell = 8 # HOG pixels per cell
+cell_per_block = 2 # HOG cells per block
+hog_channel = "ALL" # Can be 0, 1, 2, or "ALL"
+spatial_size = (32, 32) # Spatial binning dimensions
+hist_bins = 32    # Number of histogram bins
+spatial_feat = True # Spatial features on or off
+hist_feat = True # Histogram features on or off
+hog_feat = True # HOG features on or off
+y_start_stop = [400, 656] # Min and max in y to search in slide_window()
+scale = 1.5 # scale the sliding window size
+overlap = 0.75 # 0.5 # overlapping parameter for slide window
+heat_threshold = 0.75 # heatmap threshold
+```
 
 ![alt text][image7]
 
