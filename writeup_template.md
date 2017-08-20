@@ -22,6 +22,7 @@ The goals / steps of this project are the following:
 [image_preds]: ./assets/prediction.PNG
 [image_slide1]: ./assets/slide_window1.PNG
 [image_slide2]: ./assets/slide_window2.PNG
+[image_slide21]: ./assets/slide_window21.PNG
 [image5]: ./assets/bboxes_and_heat.png
 [image6]: ./assets/labels_map.png
 [image7]: ./assets/output_bboxes.png
@@ -146,9 +147,19 @@ I decided to search random window positions at random scales all over the image 
 
 I applied following techniques:
 - Interest areas: ystart = 400, ystop = 656
-- Scale the image smaller: scale = 1.5;  I can scale window size, but my model is expecting (64,64). So I decide to scale image size instead. 
+- Sliding window is too small, need to scale.
+
+Two ways to scale: scale the whole image smaller OR scale the sliding window bigger.
+
+scale the whole image smaller: scale = 1.5; the result:
 
 ![alt text][image_slide2]
+
+Scale up the sliding window size: scale = 1.5;  the window size will (96,96). The result:
+
+![alt text][image_slide21]
+
+I decided to use later one because the first one did not work out for me. To use later one, we have to resize window size to (64,64) before applying classifier.
 
 #### 2. Show some examples of test images to demonstrate how your pipeline is working.  What did you do to optimize the performance of your classifier?
 
