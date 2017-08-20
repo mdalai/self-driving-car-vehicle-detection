@@ -27,6 +27,8 @@ The goals / steps of this project are the following:
 [image42]: ./assets/pipeline_test_all.PNG
 [image51]: ./assets/heatmap1.PNG
 [image52]: ./assets/heatmap2.PNG
+[image61]: ./assets/heatmap61.PNG
+[image62]: ./assets/heatmap62.PNG
 
 
 [video1]: ./project_video.mp4
@@ -195,16 +197,11 @@ Here is an example of applying heatmap:
 
 I added the heatmap technique into the pipeline. Here's an example result showing the heatmap from a series of frames of video, the result of `scipy.ndimage.measurements.label()` and the bounding boxes then overlaid on the last frame of video:
 
-### Here are six frames and their corresponding heatmaps:
 
-![alt text][image5]
+I tried following heatmap thresholds: 1, 0.5, 0.75, 0.85, 0.95. Best: **heat_threshold = 0.75**.
 
-### Here is the output of `scipy.ndimage.measurements.label()` on the integrated heatmap from all six frames:
-![alt text][image6]
-
-### Here the resulting bounding boxes are drawn onto the last frame in the series:
-![alt text][image7]
-
+### Here are six frames and their corresponding heatmaps, resulting bounding boxes:
+![alt text][image62]
 
 
 ---
