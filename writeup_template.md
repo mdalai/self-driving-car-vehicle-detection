@@ -25,10 +25,10 @@ The goals / steps of this project are the following:
 [image_slide21]: ./assets/slide_window21.PNG
 [image41]: ./assets/pipeline_test1.PNG
 [image42]: ./assets/pipeline_test_all.PNG
+[image51]: ./assets/heatmap1.PNG
+[image52]: ./assets/heatmap2.PNG
 
-[image5]: ./assets/bboxes_and_heat.png
-[image6]: ./assets/labels_map.png
-[image7]: ./assets/output_bboxes.png
+
 [video1]: ./project_video.mp4
 
 _[Rubric](https://review.udacity.com/#!/rubrics/513/view) Points: 
@@ -181,9 +181,19 @@ Here's a [link to my video result](./project_video.mp4)
 
 #### 2. Describe how (and identify where in your code) you implemented some kind of filter for false positives and some method for combining overlapping bounding boxes.
 
-I recorded the positions of positive detections in each frame of the video.  From the positive detections I created a heatmap and then thresholded that map to identify vehicle positions.  I then used `scipy.ndimage.measurements.label()` to identify individual blobs in the heatmap.  I then assumed each blob corresponded to a vehicle.  I constructed bounding boxes to cover the area of each blob detected.  
+I recorded the positions of positive detections in each frame of the video.  From the positive detections I created a heatmap and then thresholded that map to identify vehicle positions.  I then used `scipy.ndimage.measurements.label()` to identify individual blobs in the heatmap.  I then assumed each blob corresponded to a vehicle.  I constructed bounding boxes to cover the area of each blob detected. 
 
-Here's an example result showing the heatmap from a series of frames of video, the result of `scipy.ndimage.measurements.label()` and the bounding boxes then overlaid on the last frame of video:
+Here is an example of applying heatmap:
+
+![alt text][image51]
+
+**The results is NOT Satisfying!!! In order to apply heatmap, we need to have many bounding boxes detection. It is too few now. I need more overlapping detections. I updates the overlapping parameter and try it again**
+
+![alt text][image52]
+
+**Much better!!!**
+
+I added the heatmap technique into the pipeline. Here's an example result showing the heatmap from a series of frames of video, the result of `scipy.ndimage.measurements.label()` and the bounding boxes then overlaid on the last frame of video:
 
 ### Here are six frames and their corresponding heatmaps:
 
