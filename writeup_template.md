@@ -30,8 +30,10 @@ The goals / steps of this project are the following:
 [image61]: ./assets/heatmap61.PNG
 [image62]: ./assets/heatmap62.PNG
 
+[image7]: ./assets/pipeline_test_all2.PNG
 
-[video1]: ./project_video.mp4
+
+[video1]: ./project_video_output3.mp4
 
 _[Rubric](https://review.udacity.com/#!/rubrics/513/view) Points: 
 Here I will consider the rubric points individually and describe how I addressed each point in my implementation._  
@@ -201,14 +203,30 @@ I added the heatmap technique into the pipeline. Here's an example result showin
 I tried following heatmap thresholds: 1, 0.5, 0.75, 0.85, 0.95. Best: **heat_threshold = 0.75**.
 
 ### Here are six frames and their corresponding heatmaps, resulting bounding boxes:
+
 ![alt text][image62]
 
 
+### Create final pipeline and test results: 
+
+![alt text][image7]
+
 ---
 
-###Discussion
+### Discussion
 
-####1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
+#### 1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
 
-Here I'll talk about the approach I took, what techniques I used, what worked and why, where the pipeline might fail and how I might improve it if I were going to pursue this project further.  
+Here I'll talk about the approach I took, what techniques I used, what worked and why, where the pipeline might fail and how I might improve it if I were going to pursue this project further. 
+
+- Matplotlib image .PNG file reading pixel values [0,1]. This screws up all my works in the first part. I just couldn't find the problem why my classifier works so poor. DO NOT Recommend convert [0,1] to [0, 255] and then scale it. Just keep the [0,1] and train the classifier. When reading the image frame, remember to divide by 255. 
+- TOO SlOW applying pipeline into the video. I think following techniques can improve the processing speed:
+  - Incease pix_per_cell, cell_per_block from 8,2 to 16,4. 
+  - Appy HOG feature extraction on the whole image once.
+  - Decrease spacial color size. (32,32) --> (16,16). It will decrease the feature amount. So that the model can process faster.
+- Still have many false positives, may apply:
+  - apply different sliding window sizes: (64,64), scale 1.2, scale 1.5.
+  - Keep tunning parameters when training the classifier. Find the best parameters by Sklearn GridSearchCV tool.
+  - Apply more training data to train the classifier. We need a better classifier.
+  - Try deep learning classifier which has CNN may work better.
 
